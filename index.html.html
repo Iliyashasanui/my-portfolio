@@ -971,24 +971,25 @@ View All Projects
 <h3 class="text-2xl font-bold mb-6">Send Me a Message</h3>
 <form id="contactForm">
   <div class="mb-6">
-    <label for="name">Your Name</label>
-    <input type="text" id="name" placeholder="John Doe" required>
+    <label for="name" class="block text-gray-700 font-medium mb-2">Your Name</label>
+    <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-primary" placeholder="John Doe" required>
   </div>
   <div class="mb-6">
-    <label for="email">Your Email</label>
-    <input type="email" id="email" placeholder="john@example.com" required>
+    <label for="email" class="block text-gray-700 font-medium mb-2">Your Email</label>
+    <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-primary" placeholder="john@example.com" required>
   </div>
   <div class="mb-6">
-    <label for="subject">Subject</label>
-    <input type="text" id="subject" placeholder="Project Inquiry">
+    <label for="subject" class="block text-gray-700 font-medium mb-2">Subject</label>
+    <input type="text" id="subject" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-primary" placeholder="Project Inquiry">
   </div>
   <div class="mb-6">
-    <label for="message">Your Message</label>
-    <textarea id="message" placeholder="Tell me about your project..."></textarea>
+    <label for="message" class="block text-gray-700 font-medium mb-2">Your Message</label>
+    <textarea id="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-primary" placeholder="Tell me about your project..."></textarea>
   </div>
-  <button type="submit">Send Message</button>
+  <button type="submit" class="bg-primary text-white px-6 py-3 rounded-button font-medium hover:bg-primary/90 transition-colors w-full whitespace-nowrap">
+    Send Message
+  </button>
 </form>
-
 <!-- Snackbar -->
 <div id="snackbar" class="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-green-600 text-white px-6 py-3 rounded shadow hidden">
   ✅ Message sent successfully!
