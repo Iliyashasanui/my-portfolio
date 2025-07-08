@@ -966,30 +966,29 @@ View All Projects
     </a>
   </div>
 </div>
-
 </div>
 <div class="bg-white p-8 rounded-lg shadow-md reveal">
 <h3 class="text-2xl font-bold mb-6">Send Me a Message</h3>
-<form id="contactForm">
-<div class="mb-6">
-<label for="name" class="block text-gray-700 font-medium mb-2">Your Name</label>
-<input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-primary" placeholder="John Doe">
-</div>
-<div class="mb-6">
-<label for="email" class="block text-gray-700 font-medium mb-2">Your Email</label>
-<input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-primary" placeholder="john@example.com">
-</div>
-<div class="mb-6">
-<label for="subject" class="block text-gray-700 font-medium mb-2">Subject</label>
-<input type="text" id="subject" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-primary" placeholder="Project Inquiry">
-</div>
-<div class="mb-6">
-<label for="message" class="block text-gray-700 font-medium mb-2">Your Message</label>
-<textarea id="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-primary" placeholder="Tell me about your project..."></textarea>
-</div>
-<button type="submit" class="bg-primary text-white px-6 py-3 !rounded-button font-medium hover:bg-primary/90 transition-colors w-full whitespace-nowrap">
-Send Message
-</button>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLScMRnkrHPosnefrMnkCMdWOw1JN1c-bVqFg9llAy75sDjYFVQ/formResponse" method="POST" target="_blank">
+  <div class="mb-6">
+    <label for="name" class="block text-gray-700 font-medium mb-2">Your Name</label>
+    <input type="text" name="entry.1762968364" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-primary" placeholder="John Doe" required>
+  </div>
+  <div class="mb-6">
+    <label for="email" class="block text-gray-700 font-medium mb-2">Your Email</label>
+    <input type="email" name="entry.1110019354" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-primary" placeholder="john@example.com" required>
+  </div>
+  <div class="mb-6">
+    <label for="subject" class="block text-gray-700 font-medium mb-2">Subject</label>
+    <input type="text" name="entry.387383635" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-primary" placeholder="Project Inquiry">
+  </div>
+  <div class="mb-6">
+    <label for="message" class="block text-gray-700 font-medium mb-2">Your Message</label>
+    <textarea name="entry.687471202" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-primary" placeholder="Tell me about your project..."></textarea>
+  </div>
+  <button type="submit" class="bg-primary text-white px-6 py-3 !rounded-button font-medium hover:bg-primary/90 transition-colors w-full whitespace-nowrap">
+    Send Message
+  </button>
 </form>
 </div>
 </div>
