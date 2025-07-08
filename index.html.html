@@ -1540,45 +1540,56 @@ modalDialog.querySelector('.sticky').classList.remove('shadow-md');
 }
 });
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-  const contactForm = document.getElementById('contactForm');
-  
-  contactForm.addEventListener('submit', function (e) {
-    e.preventDefault();
+  document.addEventListener('DOMContentLoaded', function () {
+    const contactForm = document.getElementById('contactForm');
 
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const subject = document.getElementById('subject').value.trim();
-    const message = document.getElementById('message').value.trim();
-
-    const formData = new FormData();
-    formData.append('entry.1762968364', name);
-    formData.append('entry.1110019354', email);
-    formData.append('entry.387383635', subject);
-    formData.append('entry.687471202', message);
-
-    fetch('https://docs.google.com/forms/u/0/d/e/1FAIpQLScMRnkrHPosnefrMnkCMdWOw1JN1c-bVqFg9llAy75sDjYFVQ/formResponse', {
-      method: 'POST',
-      mode: 'no-cors',
-      body: formData
-    })
-    .then(() => {
-      contactForm.reset();
-      showSnackbar('✅ Your message has been sent!');
-    })
-    .catch(() => {
-      showSnackbar('❌ Failed to send. Try again.');
-    });
-
-    function showSnackbar(message) {
-      const snackbar = document.createElement('div');
-      snackbar.textContent = message;
-      snackbar.className = 'fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-green-600 text-white px-6 py-3 rounded shadow z-50';
-      document.body.appendChild(snackbar);
-      setTimeout(() => snackbar.remove(), 4000);
+    if (!contactForm) {
+      console.error('❌ contactForm not found');
+      return;
     }
+
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const subject = document.getElementById('subject').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      if (!name || !email || !subject || !message) {
+        showSnackbar('⚠️ Please fill out all fields.');
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append('entry.1762968364', name);
+      formData.append('entry.1110019354', email);
+      formData.append('entry.387383635', subject);
+      formData.append('entry.687471202', message);
+
+      fetch('https://docs.google.com/forms/u/0/d/e/1FAIpQLScMRnkrHPosnefrMnkCMdWOw1JN1c-bVqFg9llAy75sDjYFVQ/formResponse', {
+        method: 'POST',
+        mode: 'no-cors',
+        body: formData
+      })
+      .then(() => {
+        contactForm.reset();
+        showSnackbar('✅ Your message has been sent!');
+      })
+      .catch(() => {
+        showSnackbar('❌ Something went wrong.');
+      });
+
+      function showSnackbar(message) {
+        const snackbar = document.createElement('div');
+        snackbar.textContent = message;
+        snackbar.className = 'fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-primary text-white px-6 py-3 rounded shadow z-50';
+        document.body.appendChild(snackbar);
+        setTimeout(() => snackbar.remove(), 4000);
+      }
+    });
   });
-});
 </script>
+
 </body>
 </html>
