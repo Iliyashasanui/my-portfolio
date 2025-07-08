@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -966,34 +967,31 @@ View All Projects
     </a>
   </div>
 </div>
+
 </div>
 <div class="bg-white p-8 rounded-lg shadow-md reveal">
 <h3 class="text-2xl font-bold mb-6">Send Me a Message</h3>
 <form id="contactForm">
-  <div class="mb-6">
-    <label for="name" class="block text-gray-700 font-medium mb-2">Your Name</label>
-    <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-primary" placeholder="John Doe" required>
-  </div>
-  <div class="mb-6">
-    <label for="email" class="block text-gray-700 font-medium mb-2">Your Email</label>
-    <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-primary" placeholder="john@example.com" required>
-  </div>
-  <div class="mb-6">
-    <label for="subject" class="block text-gray-700 font-medium mb-2">Subject</label>
-    <input type="text" id="subject" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-primary" placeholder="Project Inquiry">
-  </div>
-  <div class="mb-6">
-    <label for="message" class="block text-gray-700 font-medium mb-2">Your Message</label>
-    <textarea id="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-primary" placeholder="Tell me about your project..."></textarea>
-  </div>
-  <button type="submit" class="bg-primary text-white px-6 py-3 rounded-button font-medium hover:bg-primary/90 transition-colors w-full whitespace-nowrap">
-    Send Message
-  </button>
-</form>
-<!-- Snackbar -->
-<div id="snackbar" class="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-green-600 text-white px-6 py-3 rounded shadow hidden">
-  ✅ Message sent successfully!
+<div class="mb-6">
+<label for="name" class="block text-gray-700 font-medium mb-2">Your Name</label>
+<input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-primary" placeholder="John Doe">
 </div>
+<div class="mb-6">
+<label for="email" class="block text-gray-700 font-medium mb-2">Your Email</label>
+<input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-primary" placeholder="john@example.com">
+</div>
+<div class="mb-6">
+<label for="subject" class="block text-gray-700 font-medium mb-2">Subject</label>
+<input type="text" id="subject" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-primary" placeholder="Project Inquiry">
+</div>
+<div class="mb-6">
+<label for="message" class="block text-gray-700 font-medium mb-2">Your Message</label>
+<textarea id="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-primary" placeholder="Tell me about your project..."></textarea>
+</div>
+<button type="submit" class="bg-primary text-white px-6 py-3 !rounded-button font-medium hover:bg-primary/90 transition-colors w-full whitespace-nowrap">
+Send Message
+</button>
+</form>
 </div>
 </div>
 </div>
@@ -1541,44 +1539,40 @@ modalDialog.querySelector('.sticky').classList.remove('shadow-md');
 });
 }
 });
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-  const contactForm = document.getElementById('contactForm');
-  const snackbar = document.getElementById('snackbar');
-
-  if (contactForm) {
-    contactForm.addEventListener('submit', function (e) {
-      e.preventDefault(); // 🛑 Prevent browser refresh
-
-      const submitButton = contactForm.querySelector('button[type="submit"]');
-      submitButton.textContent = 'Sending...';
-      submitButton.disabled = true;
-
-      const formData = new FormData();
-      formData.append('entry.1762968364', document.getElementById('name').value);
-      formData.append('entry.1110019354', document.getElementById('email').value);
-      formData.append('entry.387383635', document.getElementById('subject').value);
-      formData.append('entry.687471202', document.getElementById('message').value);
-
-      fetch('https://docs.google.com/forms/d/e/1FAIpQLScMRnkrHPosnefrMnkCMdWOw1JN1c-bVqFg9llAy75sDjYFVQ/formResponse', {
-        method: 'POST',
-        mode: 'no-cors',
-        body: formData
-      }).then(() => {
-        snackbar.classList.remove('hidden');
-        snackbar.classList.add('block');
-
-        setTimeout(() => {
-          snackbar.classList.add('hidden');
-          snackbar.classList.remove('block');
-        }, 3000);
-
-        contactForm.reset();
-        submitButton.textContent = 'Send Message';
-        submitButton.disabled = false;
-      });
-    });
-  }
+</script>
+<script id="formHandler">
+document.addEventListener('DOMContentLoaded', function() {
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+contactForm.addEventListener('submit', function(e) {
+e.preventDefault();
+const name = document.getElementById('name').value;
+const email = document.getElementById('email').value;
+const subject = document.getElementById('subject').value;
+const message = document.getElementById('message').value;
+// Form validation
+if (!name || !email || !subject || !message) {
+alert('Please fill in all fields');
+return;
+}
+// Email validation
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+if (!emailRegex.test(email)) {
+alert('Please enter a valid email address');
+return;
+}
+// Simulate form submission
+const submitButton = contactForm.querySelector('button[type="submit"]');
+submitButton.textContent = 'Sending...';
+submitButton.disabled = true;
+setTimeout(() => {
+alert('Thank you for your message! I will get back to you soon.');
+contactForm.reset();
+submitButton.textContent = 'Send Message';
+submitButton.disabled = false;
+}, 1500);
+});
+}
 });
 </script>
 </body>
